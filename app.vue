@@ -31,7 +31,11 @@ const routes: NavbarRoute[] = [
   {
     label: "Pre-trained",
     icon: "ic:baseline-check",
-    path: "/object-detection"
+    children: [{
+      label: "Object detection",
+      icon: "material-symbols:detection-and-zone",
+      path: "/object-detection"
+    }]
   },
   {
     label: "Re-trained",
