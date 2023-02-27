@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <DemoLayout title="Object detection (coco-ssd)" :description="description" :link="link">
         <div v-if="isModelLoaded">
             <Camera @ready="predictWebcam">
                 <BoundingBoxes :detected-objects="detectedObjects" />
@@ -7,9 +7,9 @@
         </div>
 
         <div v-else>
-            <NH3>Loading model...</NH3>
+            <n-h3>Loading model...</n-h3>
         </div>
-    </div>
+    </DemoLayout>
 </template>
 
 <script setup lang="ts">
@@ -34,5 +34,13 @@ function predictWebcam(video: HTMLVideoElement) {
         })
     }
 }
+
+const link = "https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd"
+
+const description = `
+        This model detects objects defined in the COCO dataset, 
+        which is a large-scale object detection, segmentation, and captioning dataset. 
+        The model is capable of detecting 80 classes of objects. (SSD stands for Single Shot MultiBox Detection).
+`
 </script>
 

@@ -1,3 +1,3 @@
 <template>
-    <NH3>Collection of Tensorflow JS models</NH3>
+    <n-h3>Collection of Tensorflow JS models</n-h3>
 </template>

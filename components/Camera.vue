@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col gap-3 w-fit m-3">
+    <div class="flex flex-col gap-3 w-fit">
 
-        <div class="flex gap-3">
+        <div class="flex gap-3 mx-3">
             <n-button v-show="!isCameraOn" @click="start" text>
                 <NaiveIcon name="material-symbols:play-circle-outline" :size="24"></NaiveIcon>
             </n-button>
