@@ -1,3 +1,3 @@
 <template>
-    
+    <Camera></Camera>
 </template>
