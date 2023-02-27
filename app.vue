@@ -1,11 +1,11 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="routes" menu-inverted>
+    <NaiveNavbar :routes="routes">
 
       <template #start>
         <NuxtLink to="/">
           <div class=" flex items-center gap-3">
-            <NaiveIcon name="logos:tensorflow" :size="30"></NaiveIcon>
+            <NaiveIcon name="logos:tensorflow" :size="28"></NaiveIcon>
             <n-h4 class="m-0">TensorFlow demos</n-h4>
           </div>
         </NuxtLink>
@@ -17,7 +17,7 @@
             <NaiveIcon name="codicon:github"></NaiveIcon>
           </n-button>
         </NuxtLink>
-        <NaiveColorModeSwitch></NaiveColorModeSwitch>
+        <NaiveColorModeSwitch />
       </template>
     </NaiveNavbar>
     <NuxtPage />
