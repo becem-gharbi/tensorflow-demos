@@ -11,12 +11,14 @@ import "@tensorflow/tfjs-backend-cpu";
 import "@tensorflow/tfjs-backend-webgl";
 import * as poseDetection from '@tensorflow-models/pose-detection';
 
-let model: poseDetection.PoseDetector | undefined = undefined
+let detector: poseDetection.PoseDetector | undefined = undefined
 const loading = ref(true)
 const poses = ref<poseDetection.Pose[]>([])
 
 onMounted(async () => {
-    model = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, {
+    const model = poseDetection.SupportedModels.MoveNet
+
+    detector = await poseDetection.createDetector(model, {
         modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
         minPoseScore: 0.5
     });
@@ -25,8 +27,8 @@ onMounted(async () => {
 })
 
 function predict(video: HTMLVideoElement) {
-    if (video.srcObject && model) {
-        model.estimatePoses(video).then((_poses) => {
+    if (video.srcObject && detector) {
+        detector.estimatePoses(video).then((_poses) => {
             poses.value = _poses
             window.requestAnimationFrame(() => predict(video));
         }).catch(err => alert(err))
@@ -34,7 +36,7 @@ function predict(video: HTMLVideoElement) {
 }
 
 onUnmounted(() => {
-    model?.dispose()
+    detector?.dispose()
 })
 
 const link = "https://github.com/tensorflow/tfjs-models/tree/master/pose-detection"

@@ -34,18 +34,23 @@ const routes: NavbarRoute[] = [
     children: [
       {
         label: "Object detection",
-        icon: "material-symbols:detection-and-zone",
+        icon: "fluent:scan-object-24-regular",
         path: "/object-detection"
       },
       {
         label: "Pose detection",
-        icon: "gis:position-man",
+        icon: "material-symbols:detection-and-zone",
         path: "/pose-detection",
       },
       {
         label: "Face detection",
         icon: "teenyicons:face-id-outline",
         path: "/face-detection"
+      },
+      {
+        label: "Hand pose detection",
+        icon: "ph:hand-pointing-fill",
+        path: "/hand-pose-detection"
       }
     ]
   },
