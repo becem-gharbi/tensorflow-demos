@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-wrap gap-5 my-4">
+    <div class="flex flex-wrap gap-5 md:my-10 my-5 justify-around">
         <div class="max-w-sm mx-5 flex flex-col gap-3">
             <n-h2>{{ title }}</n-h2>
             <n-text class="leading-6 text-justify">{{ description }}</n-text>

@@ -41,6 +41,11 @@ const routes: NavbarRoute[] = [
         label: "Pose detection",
         icon: "gis:position-man",
         path: "/pose-detection",
+      },
+      {
+        label: "Face detection",
+        icon: "teenyicons:face-id-outline",
+        path: "/face-detection"
       }
     ]
   },
