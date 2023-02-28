@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
+  naiveui: {
+    defaultColorMode: "dark",
+  },
 
   // Fix TypeError exception on production
   // https://github.com/vitejs/vite/issues/9703#issuecomment-1216662109
