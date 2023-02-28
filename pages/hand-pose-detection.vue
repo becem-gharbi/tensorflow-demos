@@ -38,6 +38,7 @@ function predict(video: HTMLVideoElement) {
 
 onUnmounted(() => {
     detector?.dispose()
+    detector = undefined
 })
 
 const link = "https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection"

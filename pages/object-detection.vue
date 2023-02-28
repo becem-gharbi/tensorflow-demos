@@ -31,6 +31,7 @@ function predict(video: HTMLVideoElement) {
 
 onUnmounted(() => {
     model?.dispose()
+    model = undefined
 })
 
 const link = "https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd"
