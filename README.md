@@ -1,15 +1,21 @@
 # TensorFlow demos
 
-Demos of some TensorFlow pretrained models. Built with Nuxt 3.
+Nuxt 3 demo app of some TensorFlow JS models.
+
+## Pre-trained Models
+
+- ✔️ Face detection
+- ✔️ Hand pose detection
+- ✔️ Object detection
+- ✔️ Pose detection
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
 yarn install
-
+```
 
 ## Development Server
 
