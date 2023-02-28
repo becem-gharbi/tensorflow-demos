@@ -69,8 +69,11 @@ function stop() {
     });
 
     stream = null
-    video.value!.srcObject = null
     isCameraOn.value = false
+
+    if (video.value) {
+        video.value.srcObject = null
+    }
 }
 
 
@@ -80,4 +83,6 @@ function restart() {
     stop()
     start()
 }
+
+onUnmounted(() => stop())
 </script>
