@@ -18,7 +18,7 @@ const poses = ref<poseDetection.Pose[]>([])
 onMounted(async () => {
     model = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, {
         modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
-        minPoseScore: 0.6
+        minPoseScore: 0.5
     });
 
     loading.value = false
