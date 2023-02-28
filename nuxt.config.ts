@@ -6,4 +6,15 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
+
+  // Fix TypeError exception on production
+  // https://github.com/vitejs/vite/issues/9703#issuecomment-1216662109
+  vite: {
+    build: {
+      commonjsOptions: { include: [] },
+    },
+    optimizeDeps: {
+      disabled: false,
+    },
+  },
 });
