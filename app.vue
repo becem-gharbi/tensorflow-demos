@@ -39,7 +39,8 @@ const routes: NavbarRoute[] = [
       },
       {
         label: "Pose detection",
-        path: "/pose-detection"
+        icon: "gis:position-man",
+        path: "/pose-detection",
       }
     ]
   },

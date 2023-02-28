@@ -1,14 +1,8 @@
 <template>
-    <DemoLayout title="Object detection (coco-ssd)" :description="description" :link="link">
-        <div v-if="isModelLoaded">
-            <Camera @ready="predictWebcam">
-                <BoundingBoxes :detected-objects="detectedObjects" />
-            </Camera>
-        </div>
-
-        <div v-else>
-            <n-h3>Loading model...</n-h3>
-        </div>
+    <DemoLayout title="Object detection (coco-ssd)" :description="description" :link="link" :loading="loading">
+        <Camera @ready="predict">
+            <ObjectDetectionOverlay :detected-objects="detectedObjects" />
+        </Camera>
     </DemoLayout>
 </template>
 
@@ -17,21 +11,21 @@ import "@tensorflow/tfjs-backend-cpu";
 import "@tensorflow/tfjs-backend-webgl";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
-let model: cocoSsd.ObjectDetection | null = null
-const isModelLoaded = ref(false)
+let model: cocoSsd.ObjectDetection | undefined = undefined
+const loading = ref(true)
 const detectedObjects = ref<cocoSsd.DetectedObject[]>();
 
 onMounted(async () => {
     model = await cocoSsd.load()
-    isModelLoaded.value = true
+    loading.value = false
 })
 
-function predictWebcam(video: HTMLVideoElement) {
+function predict(video: HTMLVideoElement) {
     if (video.srcObject && model) {
-        model.detect(video).then((predictions) => {
-            detectedObjects.value = predictions
-            window.requestAnimationFrame(() => predictWebcam(video));
-        })
+        model.detect(video).then((_detectedObjects) => {
+            detectedObjects.value = _detectedObjects
+            window.requestAnimationFrame(() => predict(video));
+        }).catch(err => alert(err))
     }
 }
 
