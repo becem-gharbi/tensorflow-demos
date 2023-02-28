@@ -18,6 +18,6 @@ jobs:
           cache: yarn
           node-version: 18
       - run: yarn install --frozen-lockfile
-      - run: npx semantic-release
+      - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
