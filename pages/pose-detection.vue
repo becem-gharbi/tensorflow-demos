@@ -33,7 +33,12 @@ function predict(video: HTMLVideoElement) {
     }
 }
 
+onUnmounted(() => {
+    model?.dispose()
+})
+
 const link = "https://github.com/tensorflow/tfjs-models/tree/master/pose-detection"
+
 const description = `
 MoveNet is an ultra fast and accurate model that detects 17 keypoints of a body. The model is offered on TF.Hub with two variants, Lightning and Thunder. Lightning is intended for latency-critical applications, and Thunder is intended for applications that require high accuracy. Both models run faster than real time (30+ FPS) on most modern desktops and laptops, which proves crucial for live fitness, health, and wellness applications.
 `
