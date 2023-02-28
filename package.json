@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@bg-dev/nuxt-naiveui": "^1.0.0-beta.4",
+    "@mediapipe/pose": "^0.5.1675469404",
     "@tensorflow-models/coco-ssd": "^2.2.2",
+    "@tensorflow-models/pose-detection": "^2.0.0",
     "@tensorflow/tfjs-backend-cpu": "^4.2.0",
     "@tensorflow/tfjs-backend-webgl": "^4.2.0",
     "@tensorflow/tfjs-converter": "^4.2.0",

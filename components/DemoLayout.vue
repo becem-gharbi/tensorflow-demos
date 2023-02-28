@@ -2,7 +2,7 @@
     <div class="flex flex-wrap gap-5 my-4">
         <div class="max-w-sm mx-5 flex flex-col gap-3">
             <n-h2>{{ title }}</n-h2>
-            <n-text class="leading-6">{{ description }}</n-text>
+            <n-text class="leading-6 text-justify">{{ description }}</n-text>
 
             <NuxtLink v-if="link" :to="link" target="_">
                 <n-button text>
@@ -14,10 +14,19 @@
             </NuxtLink>
         </div>
 
-        <slot></slot>
+        <div v-if="loading">
+            <n-result title="Loading model" description="Please wait a moment">
+                <template #icon>
+                    <n-spin size="large" />
+                </template>
+            </n-result>
+
+        </div>
+
+        <slot v-else></slot>
     </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{ title: string, description: string, link?: string }>()
+defineProps<{ title: string, description: string, link?: string, loading: boolean }>()
 </script>

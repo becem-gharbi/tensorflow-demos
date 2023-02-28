@@ -24,6 +24,7 @@
 <script setup lang="ts">
 let stream: MediaStream | null = null
 
+const props = defineProps<{ frameRate?: number }>()
 const emits = defineEmits<{ (e: "ready", video: HTMLVideoElement): void }>()
 const video = ref<HTMLVideoElement>()
 const isCameraOn = ref(false)
@@ -40,7 +41,8 @@ function start() {
             width: {
                 ideal: window.innerWidth,
             },
-            facingMode: facingMode.value
+            facingMode: facingMode.value,
+            frameRate: props.frameRate || 30
         }
     }
 
