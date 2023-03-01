@@ -13,10 +13,10 @@ defineProps<{ faces: Face[] }>()
 function getBoxStyle(box: Face["box"]): StyleValue {
     return {
         position: "absolute",
-        top: Math.round(box.yMin) + "px",
-        left: Math.round(box.xMin) + "px",
-        width: Math.round(box.width) + "px",
-        height: Math.round(box.height) + "px",
+        top: box.yMin + "px",
+        left: box.xMin + "px",
+        width: box.width + "px",
+        height: box.height + "px",
         border: "2px solid red"
     }
 }
@@ -24,8 +24,8 @@ function getBoxStyle(box: Face["box"]): StyleValue {
 function getKeypointStyle(box: Face["box"], keypoint: Keypoint): StyleValue {
     return {
         position: "absolute",
-        top: Math.round(keypoint.y - box.yMin) + "px",
-        left: Math.round(keypoint.x - box.xMin) + "px",
+        top: (keypoint.y - box.yMin) + "px",
+        left: (keypoint.x - box.xMin) + "px",
         width: "6px",
         height: "6px",
         borderRadius: "50%",

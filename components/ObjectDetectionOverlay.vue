@@ -16,10 +16,10 @@ function getStyle(detectedObject: DetectedObject): StyleValue {
     return {
         border: '3px red solid',
         position: 'absolute',
-        left: Math.round(detectedObject.bbox[0]) + 'px',
-        top: Math.round(detectedObject.bbox[1]) + 'px',
-        width: Math.round(detectedObject.bbox[2]) + 'px',
-        height: Math.round(detectedObject.bbox[3]) + 'px',
+        left: detectedObject.bbox[0] + 'px',
+        top: detectedObject.bbox[1] + 'px',
+        width: detectedObject.bbox[2] + 'px',
+        height: detectedObject.bbox[3] + 'px',
     }
 }
 </script>
