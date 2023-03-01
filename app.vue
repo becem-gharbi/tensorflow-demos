@@ -56,6 +56,11 @@ const routes: NavbarRoute[] = [
         label: "Hand pose detection",
         icon: "ph:hand-pointing-fill",
         path: "/hand-pose-detection"
+      },
+      {
+        label: "Question and answer",
+        icon: "fluent:chat-bubbles-question-16-regular",
+        path: "/question-and-answer"
       }
     ]
   },
