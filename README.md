@@ -8,6 +8,8 @@ Nuxt 3 demo app of some TensorFlow JS models.
 - ✔️ Hand pose detection
 - ✔️ Object detection
 - ✔️ Pose detection
+- ✔️ Face landmarks detection
+- ✔️ Question and answer
 - ⌛ More soon...
 
 ## Setup
