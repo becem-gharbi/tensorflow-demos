@@ -13,7 +13,7 @@
             }, { label: 'Front', value: 'user' }]" />
         </div>
 
-        <div v-show="isCameraOn" class="relative w-full">
+        <div v-show="isCameraOn" class="relative w-full overflow-hidden">
             <slot></slot>
             <video ref="video" autoplay muted />
         </div>
