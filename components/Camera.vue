@@ -42,7 +42,7 @@ function start() {
                 ideal: window.innerWidth,
             },
             facingMode: facingMode.value,
-            frameRate: props.frameRate || 30
+            frameRate: props.frameRate || 60
         }
     }
 
