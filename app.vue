@@ -48,6 +48,11 @@ const routes: NavbarRoute[] = [
         path: "/face-detection"
       },
       {
+        label: "Face landmarks detection",
+        icon: "carbon:face-activated",
+        path: "/face-landmarks-detection"
+      },
+      {
         label: "Hand pose detection",
         icon: "ph:hand-pointing-fill",
         path: "/hand-pose-detection"
