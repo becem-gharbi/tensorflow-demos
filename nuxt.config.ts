@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     viewer: false,
   },
   naiveui: {
-    defaultColorMode: "dark",
+    defaultColorMode: "system",
   },
 
   // Fix TypeError exception on production

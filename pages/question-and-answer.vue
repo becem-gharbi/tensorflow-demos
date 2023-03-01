@@ -2,14 +2,15 @@
     <DemoLayout title="Question and Answer" :description="description" :link="link" :loading="loading">
         <n-form @submit.prevent="predict" class="w-full max-w-sm">
             <n-form-item label="Context" required>
-                <n-input v-model:value="context" type="textarea" :rows="8" show-count></n-input>
+                <n-input v-model:value="context" type="textarea" autosize show-count></n-input>
             </n-form-item>
             <n-form-item label="Question" required>
                 <n-input v-model:value="question"></n-input>
             </n-form-item>
 
             <n-form-item label="Answers" v-if="answers">
-                <n-alert :title="answers.length + ' results'" type="info" class="w-full">
+                <n-alert :title="answers.length + ' results'" type="info" class="w-full" closable
+                    @close="() => answers = undefined">
                     <ul v-if="answers.length">
                         <li v-for="answer of answers" class="pt-3">
                             <n-text italic class="block">{{ "Score: " + Math.round(answer.score * 10) + "%" }}</n-text>
