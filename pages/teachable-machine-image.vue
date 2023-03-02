@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <DemoLayout :description="teachableMachineDescription" title="Teachable machine" :loading="false"
+        <DemoLayout title="Teachable machine image" :description="teachableMachineDescription" :loading="false"
             :link="teachableMachineLink">
             <TeachableMachineConfig @test-model="testModel"></TeachableMachineConfig>
         </DemoLayout>
@@ -9,7 +9,7 @@
 
         <DemoLayout v-if="selectedModel" :description="selectedModel.description" :link="selectedModel.link"
             :title="selectedModel.name" :loading="loading">
-            <Camera @ready="predict" audio>
+            <Camera @ready="predict">
                 <TeachableMachineOverlay :results="results" />
             </Camera>
         </DemoLayout>
@@ -65,11 +65,10 @@ onUnmounted(() => {
     killModel()
 })
 
-const teachableMachineLink = "https://teachablemachine.withgoogle.com/"
+const teachableMachineLink = "https://teachablemachine.withgoogle.com/train/image"
 
 const teachableMachineDescription = `
     Teachable Machine is a web-based application developed by Google that allows users to create machine learning models. 
-    It is designed to make machine learning more accessible to people who are not familiar with programming or data science.
     Using Teachable Machine, users can train models to recognize and classify images, sounds, and poses by providing examples of what the model should learn. 
     The application uses a technique called transfer learning, which involves taking pre-trained neural network models and retraining them with the user's data.
 `

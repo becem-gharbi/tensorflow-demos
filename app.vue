@@ -67,7 +67,13 @@ const routes: NavbarRoute[] = [
   {
     label: "Re-trained",
     icon: "material-symbols:autorenew",
-    path: "/teachable-machine"
+    children: [
+      {
+        label: "Teachable machine image",
+        icon: "ph:image-square-light",
+        path: "/teachable-machine-image"
+      }
+    ]
   }
 ]
 
