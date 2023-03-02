@@ -11,6 +11,7 @@
             <n-form-item label="Answers" v-if="answers">
                 <n-alert :title="answers.length + ' results'" type="info" class="w-full" closable
                     @close="() => answers = undefined">
+
                     <ul v-if="answers.length">
                         <li v-for="answer of answers" class="pt-3">
                             <n-text italic class="block">{{ "Score: " + Math.round(answer.score * 10) + "%" }}</n-text>
@@ -30,18 +31,11 @@ import "@tensorflow/tfjs-backend-cpu";
 import "@tensorflow/tfjs-backend-webgl";
 import * as qna from "@tensorflow-models/qna";
 
-interface Answer {
-    text: string;
-    startIndex: number;
-    endIndex: number;
-    score: number;
-}
-
 let model: qna.QuestionAndAnswer | undefined = undefined
 
 const question = ref<string>()
 const context = ref<string>()
-const answers = ref<Answer[]>()
+const answers = ref<QnaAnswer[]>()
 const loading = ref(true)
 
 onMounted(async () => {

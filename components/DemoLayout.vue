@@ -14,7 +14,7 @@
             </NuxtLink>
         </div>
 
-        <div v-if="loading">
+        <div v-show="loading">
             <n-result title="Loading model" description="Please wait a moment">
                 <template #icon>
                     <n-spin size="large" />
@@ -22,7 +22,10 @@
             </n-result>
         </div>
 
-        <slot v-else></slot>
+        <div v-show="!loading">
+            <slot></slot>
+        </div>
+
     </div>
 </template>
 
