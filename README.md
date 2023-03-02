@@ -10,12 +10,12 @@ Nuxt 3 demo app of some TensorFlow JS models.
 - ✔️ Pose detection
 - ✔️ Face landmarks detection
 - ✔️ Question and answer
-- ⌛ More soon...
+- ✔️ Speech command recognizer
 
 ## Re-trained Models
 
 - ✔️ Teachable machine image
-- ⌛ More soon...
+- ✔️ Teachable machine audio
 
 ## Setup
 

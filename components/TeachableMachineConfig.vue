@@ -13,7 +13,7 @@
 
             <div v-else class="flex gap-4 justify-between items-center" v-for="savedModel of savedModels">
                 <n-text>{{ savedModel.name }}</n-text>
-                <n-text italic>{{ '(' + savedModel.library + ')' }}</n-text>
+                
                 <div class="flex gap-3">
                     <n-button secondary type="error" size="small" @click="() => deleteSavedModel(savedModel)">
                         Delete
@@ -32,22 +32,20 @@
                 <n-form-item label="Name" required>
                     <n-input v-model:value="modelToSave.name" placeholder="Name your model"></n-input>
                 </n-form-item>
+
                 <n-form-item label="URL" required>
                     <n-input v-model:value="modelToSave.url" placeholder="Url of the uploaded model"></n-input>
                 </n-form-item>
+
                 <n-form-item label="Description" required>
                     <n-input v-model:value="modelToSave.description" placeholder="Describe your model"></n-input>
                 </n-form-item>
-                <n-form-item label="Library" required>
-                    <n-select :options="[{
-                        label: 'Image', value: 'image'
-                    }, { label: 'Audio', value: 'audio' }, { label: 'Pose', value: 'pose' }]"
-                        v-model:value="modelToSave.library"></n-select>
-                </n-form-item>
+
                 <n-form-item label="Link">
                     <n-input v-model:value="modelToSave.link"
                         placeholder="Link to reference your Teachable machine project"></n-input>
                 </n-form-item>
+
                 <n-button attr-type="submit" block>Save model</n-button>
             </n-form>
         </n-modal>
@@ -58,6 +56,7 @@
 
 <script setup lang="ts">
 
+const props = defineProps<{ library: TeachableMachineConfigModel["library"] }>()
 const emits = defineEmits<{ (e: "testModel", model: TeachableMachineConfigModel): void }>()
 
 const activeModel = ref<TeachableMachineConfigModel>()
@@ -67,7 +66,7 @@ const modelToSave = ref<TeachableMachineConfigModel>({
     url: "",
     description: "",
     link: "",
-    library: "image"
+    library: props.library
 })
 
 const isSaveModelModalVisible = ref(false)
@@ -84,7 +83,9 @@ function getSavedModels() {
         const key = window.localStorage.key(i) as string;
         if (key.slice(0, 3) === "tm_" && window.localStorage.getItem(key)) {
             const payload: TeachableMachineConfigModel = JSON.parse(window.localStorage.getItem(key) as string)
-            results.push(payload);
+            if (payload.library === props.library) {
+                results.push(payload);
+            }
         }
     }
     return results

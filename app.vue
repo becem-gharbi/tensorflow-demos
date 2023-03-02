@@ -77,6 +77,11 @@ const routes: NavbarRoute[] = [
         label: "Teachable machine image",
         icon: "ph:image-square-light",
         path: "/teachable-machine-image"
+      },
+      {
+        label: "Teachable machine audio",
+        icon: "material-symbols:speech-to-text",
+        path: "/teachable-machine-audio"
       }
     ]
   }

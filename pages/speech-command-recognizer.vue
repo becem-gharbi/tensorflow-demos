@@ -1,21 +1,8 @@
 <template>
     <DemoLayout title="Speech command recognizer" :description="description" :link="link" :loading="loading">
-
-        <n-button v-if="!isListening" @click="start">
-            <template #icon>
-                <NaiveIcon name="ic:round-play-circle-outline" />
-            </template>
-            Start listening
-        </n-button>
-
-        <n-button v-if="isListening" @click="stop">
-            <template #icon>
-                <NaiveIcon name="mingcute:stop-line" />
-            </template>
-            Stop listening
-        </n-button>
-
-        <n-h2 v-if="isListening">{{ wordWithHighestScore }}</n-h2>
+        <AudioControls @start="start" @stop="stop">
+            <n-h2>{{ classWithHighestScore }}</n-h2>
+        </AudioControls>
     </DemoLayout>
 </template>
 
@@ -25,14 +12,12 @@ import "@tensorflow/tfjs-backend-webgl";
 import "@tensorflow/tfjs"
 import * as speechCommands from '@tensorflow-models/speech-commands';
 
-const loading = ref(true)
-const isListening = ref(false)
-
 let recognizer: speechCommands.SpeechCommandRecognizer | undefined = undefined
 
-const wordScores = ref<number[]>([])
 const wordLabels = ref<string[]>([])
-const wordWithHighestScore = ref<string>()
+const classWithHighestScore = ref<string>()
+const loading = ref(true)
+const isListening = ref(false)
 
 onMounted(async () => {
     recognizer = speechCommands.create('BROWSER_FFT');
@@ -50,19 +35,22 @@ function start() {
 }
 
 async function onRecognizeWord(result: speechCommands.SpeechCommandRecognizerResult) {
-    wordScores.value = []
-    result.scores.forEach((score) => wordScores.value.push(score as number))
-    const maxScore = Math.max(...wordScores.value)
-    const maxScoreIndex = result.scores.findIndex(el => el === maxScore)
-    wordWithHighestScore.value = wordLabels.value[maxScoreIndex]
+    const scores = result.scores.map(score => score as number)
+    const heighestScore = Math.max(...scores)
+    const heighestScoreIndex = result.scores.findIndex(el => el === heighestScore)
+    classWithHighestScore.value = wordLabels.value[heighestScoreIndex]
 }
 
 function stop() {
     recognizer?.stopListening()
-    wordScores.value = []
-    wordWithHighestScore.value = undefined
+    classWithHighestScore.value = undefined
     isListening.value = false
 }
+
+onUnmounted(() => {
+    stop()
+    recognizer = undefined
+})
 
 const link = "https://github.com/tensorflow/tfjs-models/tree/master/speech-commands"
 

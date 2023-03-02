@@ -1,19 +1,17 @@
 <template>
     <div>
-
         <DemoLayout title="Teachable machine image" :description="teachableMachineDescription" :loading="false"
             :link="teachableMachineLink">
-            <TeachableMachineConfig @test-model="testModel"></TeachableMachineConfig>
+            <TeachableMachineConfig library="image" @test-model="testModel"></TeachableMachineConfig>
         </DemoLayout>
 
 
         <DemoLayout v-if="selectedModel" :description="selectedModel.description" :link="selectedModel.link"
             :title="selectedModel.name" :loading="loading">
             <Camera @ready="predict">
-                <TeachableMachineOverlay :results="results" />
+                <div class="absolute bg-red-700 text-white p-1 m-1 w-fit">{{ classWithHeighestScore }}</div>
             </Camera>
         </DemoLayout>
-
     </div>
 </template>
 
@@ -24,31 +22,8 @@ import * as tmImage from '@teachablemachine/image';
 
 let model: tmImage.CustomMobileNet | undefined = undefined
 const loading = ref(false)
-const results = ref<TeachableMachineResult[]>([])
 const selectedModel = ref<TeachableMachineConfigModel>()
-
-async function loadModel(url: string) {
-    loading.value = true
-    const modelURL = url + 'model.json';
-    const metadataURL = url + 'metadata.json';
-    model = await tmImage
-        .load(modelURL, metadataURL)
-        .finally(() => loading.value = false)
-}
-
-function predict(video: HTMLVideoElement) {
-    if (video.srcObject && model) {
-        model.predict(video).then((_results) => {
-            results.value = _results
-            window.requestAnimationFrame(() => predict(video));
-        }).catch(err => alert(err))
-    }
-}
-
-function killModel() {
-    selectedModel.value = undefined
-    model = undefined
-}
+const classWithHeighestScore = ref<string>()
 
 async function testModel(_selectedModel: TeachableMachineConfigModel) {
     killModel()
@@ -61,8 +36,38 @@ async function testModel(_selectedModel: TeachableMachineConfigModel) {
     })
 }
 
+async function loadModel(url: string) {
+    loading.value = true
+
+    const modelURL = url + 'model.json';
+    const metadataURL = url + 'metadata.json';
+
+    model = await tmImage
+        .load(modelURL, metadataURL)
+        .finally(() => loading.value = false)
+}
+
+function predict(video: HTMLVideoElement) {
+    if (video.srcObject && model) {
+        model.predict(video).then((results) => {
+
+            const scores = results.map(result => result.probability)
+            const heighestScore = Math.max(...scores)
+            classWithHeighestScore.value = results.find(result => result.probability === heighestScore)?.className
+
+            window.requestAnimationFrame(() => predict(video));
+        }).catch(err => alert(err))
+    }
+}
+
+function killModel() {
+    selectedModel.value = undefined
+    model = undefined
+}
+
 onUnmounted(() => {
     killModel()
+    model?.dispose()
 })
 
 const teachableMachineLink = "https://teachablemachine.withgoogle.com/train/image"
