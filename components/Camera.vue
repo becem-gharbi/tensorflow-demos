@@ -24,7 +24,7 @@
 <script setup lang="ts">
 let stream: MediaStream | null = null
 
-const props = defineProps<{ frameRate?: number }>()
+const props = defineProps<{ frameRate?: number, audio?: boolean }>()
 const emits = defineEmits<{ (e: "ready", video: HTMLVideoElement): void }>()
 const video = ref<HTMLVideoElement>()
 const isCameraOn = ref(false)
@@ -43,7 +43,8 @@ function start() {
             },
             facingMode: facingMode.value,
             frameRate: props.frameRate || 60
-        }
+        },
+        audio: props.audio || false
     }
 
     navigator.mediaDevices.getUserMedia(constraints)
