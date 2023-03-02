@@ -16,6 +16,7 @@ declare global {
     name: string;
     url: string;
     description: string;
+    library: "image" | "audio" | "pose";
     link?: string;
   }
 }

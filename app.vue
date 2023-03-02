@@ -61,6 +61,11 @@ const routes: NavbarRoute[] = [
         label: "Question and answer",
         icon: "fluent:chat-bubbles-question-16-regular",
         path: "/question-and-answer"
+      },
+      {
+        label: "Speech command recognizer",
+        icon: "material-symbols:speech-to-text",
+        path: "/speech-command-recognizer"
       }
     ]
   },

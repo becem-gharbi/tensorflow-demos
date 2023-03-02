@@ -12,6 +12,11 @@ Nuxt 3 demo app of some TensorFlow JS models.
 - ✔️ Question and answer
 - ⌛ More soon...
 
+## Re-trained Models
+
+- ✔️ Teachable machine image
+- ⌛ More soon...
+
 ## Setup
 
 Make sure to install the dependencies:
