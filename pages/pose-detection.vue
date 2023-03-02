@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
+import "@tensorflow/tfjs"
 import * as poseDetection from '@tensorflow-models/pose-detection';
 
 let detector: poseDetection.PoseDetector | undefined = undefined

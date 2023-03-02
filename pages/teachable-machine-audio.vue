@@ -17,8 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
 import "@tensorflow/tfjs"
 import * as speechCommands from '@tensorflow-models/speech-commands';
 
@@ -27,10 +25,9 @@ const loading = ref(false)
 const selectedModel = ref<TeachableMachineConfigModel>()
 const wordLabels = ref<string[]>([])
 const classWithHighestScore = ref<string>()
-const isListening = ref(false)
 
 async function testModel(_selectedModel: TeachableMachineConfigModel) {
-    killModel()
+    stop()
 
     selectedModel.value = _selectedModel
 
@@ -55,7 +52,6 @@ function start() {
         includeSpectrogram: false,
         probabilityThreshold: 0.9
     });
-    isListening.value = true
 }
 
 async function onRecognizeWord(result: speechCommands.SpeechCommandRecognizerResult) {
@@ -66,20 +62,16 @@ async function onRecognizeWord(result: speechCommands.SpeechCommandRecognizerRes
 }
 
 function stop() {
-    recognizer?.stopListening()
-    classWithHighestScore.value = undefined
-    isListening.value = false
-}
-
-function killModel() {
-    stop()
-    selectedModel.value = undefined
-    recognizer = undefined
+    if (recognizer) {
+        recognizer.stopListening()
+        classWithHighestScore.value = undefined
+        selectedModel.value = undefined
+        recognizer = undefined
+    }
 }
 
 onUnmounted(() => {
     stop()
-    killModel()
 })
 
 const teachableMachineLink = "https://teachablemachine.withgoogle.com/train/audio"

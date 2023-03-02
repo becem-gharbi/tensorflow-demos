@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
+import "@tensorflow/tfjs"
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
 let model: cocoSsd.ObjectDetection | undefined = undefined

@@ -27,8 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
+import "@tensorflow/tfjs"
 import * as qna from "@tensorflow-models/qna";
 
 let model: qna.QuestionAndAnswer | undefined = undefined

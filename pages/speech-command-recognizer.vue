@@ -7,8 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
 import "@tensorflow/tfjs"
 import * as speechCommands from '@tensorflow-models/speech-commands';
 
@@ -17,7 +15,6 @@ let recognizer: speechCommands.SpeechCommandRecognizer | undefined = undefined
 const wordLabels = ref<string[]>([])
 const classWithHighestScore = ref<string>()
 const loading = ref(true)
-const isListening = ref(false)
 
 onMounted(async () => {
     recognizer = speechCommands.create('BROWSER_FFT');
@@ -31,7 +28,6 @@ function start() {
         includeSpectrogram: false,
         probabilityThreshold: 0.9
     });
-    isListening.value = true
 }
 
 async function onRecognizeWord(result: speechCommands.SpeechCommandRecognizerResult) {
@@ -42,14 +38,15 @@ async function onRecognizeWord(result: speechCommands.SpeechCommandRecognizerRes
 }
 
 function stop() {
-    recognizer?.stopListening()
-    classWithHighestScore.value = undefined
-    isListening.value = false
+    if (recognizer) {
+        recognizer.stopListening()
+        classWithHighestScore.value = undefined
+        recognizer = undefined
+    }
 }
 
 onUnmounted(() => {
     stop()
-    recognizer = undefined
 })
 
 const link = "https://github.com/tensorflow/tfjs-models/tree/master/speech-commands"

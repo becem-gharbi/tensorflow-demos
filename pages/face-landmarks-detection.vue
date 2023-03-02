@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
+import "@tensorflow/tfjs"
 import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
 
 let detector: faceLandmarksDetection.FaceLandmarksDetector | undefined = undefined

@@ -1650,7 +1650,7 @@
   resolved "https://registry.yarnpkg.com/@tensorflow-models/speech-commands/-/speech-commands-0.5.4.tgz#d1065c22d2a83a1e64247318ef2f83f9c4c8182b"
   integrity sha512-r0c/MvC15/09xWujx1pKe6mA0nta+4jQWDXGkqfSVkXLo8ARrwcZ4mTGLlfvT43ySfidiveUo0m+P51+UK821Q==
 
-"@tensorflow/tfjs-backend-cpu@4.2.0", "@tensorflow/tfjs-backend-cpu@^4.2.0":
+"@tensorflow/tfjs-backend-cpu@4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-backend-cpu/-/tfjs-backend-cpu-4.2.0.tgz#24912f8ef20b04ca4056365d83e5cc5a1671581f"
   integrity sha512-8HWg9J69m0Ovc6w8TVhhixMOcwA3t/NPXLblOA/sgJ+/JD5gsbpLWJk4QISQyb1RnpSVzw6PX3BSMTJU7hWVOg==
@@ -1658,7 +1658,7 @@
     "@types/seedrandom" "^2.4.28"
     seedrandom "^3.0.5"
 
-"@tensorflow/tfjs-backend-webgl@4.2.0", "@tensorflow/tfjs-backend-webgl@^4.2.0":
+"@tensorflow/tfjs-backend-webgl@4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-backend-webgl/-/tfjs-backend-webgl-4.2.0.tgz#684368f9a2605511d6d6753bf6fe9a08c73f6791"
   integrity sha512-Qvf+hD5pSh+xi48kChSGzcDKJemkc4EKfoVVjuxl4k25ZUPwuEd7zZUAtinkLu1dzgHNyvePZY8k+9rVm59HJA==
@@ -1669,12 +1669,12 @@
     "@types/webgl-ext" "0.0.30"
     seedrandom "^3.0.5"
 
-"@tensorflow/tfjs-converter@4.2.0", "@tensorflow/tfjs-converter@^4.2.0":
+"@tensorflow/tfjs-converter@4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-converter/-/tfjs-converter-4.2.0.tgz#3a51d446dc0d6194f31407345891966e0a77937f"
   integrity sha512-m+E2KJM6yGQdi8ElzWpChdD/JaqhWMCi9yK70v/ndkOaCL2q2UN48nYP2T5S15vkDvMIgzAQyZfh7hxQsMuvRQ==
 
-"@tensorflow/tfjs-core@4.2.0", "@tensorflow/tfjs-core@^4.2.0":
+"@tensorflow/tfjs-core@4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-core/-/tfjs-core-4.2.0.tgz#34dc455c0a00feac12015caec34a54414a404230"
   integrity sha512-uuHkiWVC8b00ngFbHvAV7J7haRlN/9PEdeenCi0CzBjgKd7aN25wPWaoN0TSQcU+GT4FJ8mofMZ9VBYZ/s/WLg==

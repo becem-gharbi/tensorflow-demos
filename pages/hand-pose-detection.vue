@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs-backend-cpu";
-import "@tensorflow/tfjs-backend-webgl";
+import "@tensorflow/tfjs"
 import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 
 let detector: handPoseDetection.HandDetector | undefined = undefined

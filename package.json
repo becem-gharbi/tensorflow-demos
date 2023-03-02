@@ -27,10 +27,6 @@
     "@tensorflow-models/pose-detection": "^2.0.0",
     "@tensorflow-models/qna": "^1.0.1",
     "@tensorflow-models/speech-commands": "^0.5.4",
-    "@tensorflow/tfjs": "^4.2.0",
-    "@tensorflow/tfjs-backend-cpu": "^4.2.0",
-    "@tensorflow/tfjs-backend-webgl": "^4.2.0",
-    "@tensorflow/tfjs-converter": "^4.2.0",
-    "@tensorflow/tfjs-core": "^4.2.0"
+    "@tensorflow/tfjs": "^4.2.0"
   }
 }
