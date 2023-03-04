@@ -1,13 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
+
   css: ["~/assets/fonts/gellix/style.css"],
-  modules: ["@bg-dev/nuxt-naiveui", "@nuxtjs/tailwindcss"],
+
+  modules: [
+    "@bg-dev/nuxt-naiveui",
+    "@nuxtjs/tailwindcss",
+    "@kevinmarrec/nuxt-pwa",
+  ],
+
   tailwindcss: {
     viewer: false,
   },
-  naiveui: {
-    defaultColorMode: "system",
+
+  pwa: {
+    manifest: {
+      name: "TensorFlow demos",
+      short_name: "TensorFlow",
+      description: "TensorFlow JS demo app",
+      theme_color: "#171717",
+    },
+    workbox: {
+      enabled: true,
+    },
   },
 
   // Fix TypeError exception on production
