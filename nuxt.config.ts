@@ -21,9 +21,6 @@ export default defineNuxtConfig({
       description: "TensorFlow JS demo app",
       theme_color: "#171717",
     },
-    workbox: {
-      enabled: true,
-    },
   },
 
   // Fix TypeError exception on production

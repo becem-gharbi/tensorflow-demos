@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="routes">
+    <NaiveNavbar :routes="routes" drawer-closable drawer-width="100%">
 
       <template #start>
         <NuxtLink to="/">
@@ -90,7 +90,21 @@ const routes: NavbarRoute[] = [
 const themeConfig: ThemeConfig = {
   shared: {
     common: {
-      fontFamily: "Gellix"
+      fontFamily: "Gellix",
+    }
+  },
+  light: {
+    common: {
+      primaryColor: "#2563eb",
+      primaryColorHover: "#0369a1",
+      primaryColorPressed: "#0369a1",
+    }
+  },
+  dark: {
+    common: {
+      primaryColor: "#38bdf8",
+      primaryColorHover: "#38bdf8",
+      primaryColorPressed: "#38bdf8",
     }
   }
 }

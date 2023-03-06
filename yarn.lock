@@ -556,10 +556,10 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@bg-dev/nuxt-naiveui@^1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@bg-dev/nuxt-naiveui/-/nuxt-naiveui-1.0.0-beta.7.tgz#71d69026e64f02f88dfa6c7e613a418fdd1c8eb2"
-  integrity sha512-bx0Wj7mdZeHRu0GSy59TNf7Zx0eIOyjXiQ8aS6V+tqBJMmc1F5R8LosRAJOhCDfhRKzsQICu8zMe3SDLlrLB5g==
+"@bg-dev/nuxt-naiveui@^1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@bg-dev/nuxt-naiveui/-/nuxt-naiveui-1.0.0-beta.8.tgz#db0ef2bcfee3c0c8ee7a9000143ba13b493377d7"
+  integrity sha512-a0cdu6QYfKkWOmqB30FBDc2sea1NELOnP+Ckje6NJ49rLHBHo0/ZTuwSSrtnjA5xzYAh10sQa36ayW86A1nSVg==
   dependencies:
     "@iconify/vue" "^4.1.0"
     "@nuxt/kit" "^3.2.2"
