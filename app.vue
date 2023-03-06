@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="routes" drawer-closable drawer-width="100%">
+    <NaiveNavbar :routes="routes" drawer-closable drawer-width="100%" :back-icon="false">
 
       <template #start>
         <NuxtLink to="/">
