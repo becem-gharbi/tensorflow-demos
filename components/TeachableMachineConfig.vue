@@ -4,7 +4,7 @@
         <div class="flex flex-col gap-4">
             <div class="flex gap-4 justify-between items-center">
                 <n-text class="text-base">My saved models</n-text>
-                <n-button secondary size="small" type="info" @click="() => isSaveModelModalVisible = true">
+                <n-button secondary size="small" type="info" @click="addModel">
                     Add
                 </n-button>
             </div>
@@ -13,10 +13,13 @@
 
             <div v-else class="flex gap-4 justify-between items-center" v-for="savedModel of savedModels">
                 <n-text>{{ savedModel.name }}</n-text>
-                
+
                 <div class="flex gap-3">
-                    <n-button secondary type="error" size="small" @click="() => deleteSavedModel(savedModel)">
+                    <n-button secondary type="error" size="small" @click="() => deleteModel(savedModel)">
                         Delete
+                    </n-button>
+                    <n-button secondary type="warning" size="small" @click="() => editModel(savedModel)">
+                        Edit
                     </n-button>
                     <n-button secondary size="small" type="success" @click="() => onTestModel(savedModel)">
                         {{ activeModel?.name === savedModel.name ? 'active' : 'test' }}
@@ -27,26 +30,26 @@
         </div>
 
 
-        <n-modal v-model:show="isSaveModelModalVisible" preset="dialog" title="Save new model to localStorage">
+        <n-modal v-model:show="isSaveModelModalVisible" preset="dialog" title="Save model to localStorage">
             <n-form @submit.prevent="saveModel" class="w-full max-w-sm">
                 <n-form-item label="Name" required>
-                    <n-input v-model:value="modelToSave.name" placeholder="Name your model"></n-input>
+                    <n-input v-model:value="modelForm.name" placeholder="Name your model" :disabled="editMode"></n-input>
                 </n-form-item>
 
                 <n-form-item label="URL" required>
-                    <n-input v-model:value="modelToSave.url" placeholder="Url of the uploaded model"></n-input>
+                    <n-input v-model:value="modelForm.url" placeholder="Url of the uploaded model"></n-input>
                 </n-form-item>
 
                 <n-form-item label="Description" required>
-                    <n-input v-model:value="modelToSave.description" placeholder="Describe your model"></n-input>
+                    <n-input v-model:value="modelForm.description" placeholder="Describe your model"></n-input>
                 </n-form-item>
 
                 <n-form-item label="Link">
-                    <n-input v-model:value="modelToSave.link"
+                    <n-input v-model:value="modelForm.link"
                         placeholder="Link to reference your Teachable machine project"></n-input>
                 </n-form-item>
 
-                <n-button attr-type="submit" block>Save model</n-button>
+                <n-button attr-type="submit" block>Save</n-button>
             </n-form>
         </n-modal>
 
@@ -61,7 +64,7 @@ const emits = defineEmits<{ (e: "testModel", model: TeachableMachineConfigModel)
 
 const activeModel = ref<TeachableMachineConfigModel>()
 
-const modelToSave = ref<TeachableMachineConfigModel>({
+const modelForm = ref<TeachableMachineConfigModel>({
     name: "",
     url: "",
     description: "",
@@ -69,15 +72,17 @@ const modelToSave = ref<TeachableMachineConfigModel>({
     library: props.library
 })
 
+const editMode = ref(false)
+
 const isSaveModelModalVisible = ref(false)
 
 const savedModels = ref<TeachableMachineConfigModel[]>([])
 
 onMounted(() => {
-    savedModels.value = getSavedModels()
+    savedModels.value = getModels()
 })
 
-function getSavedModels() {
+function getModels() {
     const results: TeachableMachineConfigModel[] = [];
     for (let i = 0; i < window.localStorage.length; i++) {
         const key = window.localStorage.key(i) as string;
@@ -92,20 +97,38 @@ function getSavedModels() {
 }
 
 function saveModel() {
-    if (modelToSave.value.name && modelToSave.value.url) {
-        const payload = JSON.stringify(modelToSave.value)
-        window.localStorage.setItem("tm_" + modelToSave.value.name.trim(), payload)
+    if (modelForm.value.name && modelForm.value.url) {
+        const payload = JSON.stringify(modelForm.value)
+        window.localStorage.setItem("tm_" + modelForm.value.name.trim(), payload)
     }
 
-    savedModels.value = getSavedModels()
+    savedModels.value = getModels()
     isSaveModelModalVisible.value = false
 
 }
 
-function deleteSavedModel(model: TeachableMachineConfigModel) {
+function deleteModel(model: TeachableMachineConfigModel) {
     window.localStorage.removeItem("tm_" + model.name)
 
-    savedModels.value = getSavedModels()
+    savedModels.value = getModels()
+}
+
+function editModel(model: TeachableMachineConfigModel) {
+    modelForm.value = model
+    editMode.value = true
+    isSaveModelModalVisible.value = true
+}
+
+function addModel() {
+    editMode.value = false
+    modelForm.value = {
+        name: "",
+        url: "",
+        description: "",
+        link: "",
+        library: props.library
+    }
+    isSaveModelModalVisible.value = true
 }
 
 function onTestModel(model: TeachableMachineConfigModel) {

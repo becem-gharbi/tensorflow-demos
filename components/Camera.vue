@@ -31,7 +31,6 @@ const isCameraOn = ref(false)
 const facingMode = ref<"user" | "environment">("user")
 
 function start() {
-    // Check camera permission
     if (!navigator.mediaDevices.getUserMedia) {
         return;
     }
