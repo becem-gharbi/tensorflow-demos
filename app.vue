@@ -11,6 +11,13 @@
         </NuxtLink>
       </template>
 
+      <template #drawer-header>
+        <div class=" flex items-center gap-3">
+          <NaiveIcon name="logos:tensorflow" :size="28"></NaiveIcon>
+          <n-h4 class="m-0">TensorFlow demos</n-h4>
+        </div>
+      </template>
+
       <template #end>
         <NuxtLink to="https://github.com/becem-gharbi/tensorflow-demos" target="_blank">
           <n-button text>
