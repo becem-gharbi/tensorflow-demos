@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-wrap gap-5 md:my-10 my-5 justify-around items-center w-full">
-        <div class="max-w-sm mx-5 flex flex-col gap-3 self-start">
+    <div class="grid md:grid-cols-2 md:m-10 m-4 gap-4">
+        <div class="max-w-sm flex flex-col gap-4">
             <n-h2>{{ title }}</n-h2>
             <n-text class="leading-6 text-justify">{{ description }}</n-text>
 
@@ -14,16 +14,18 @@
             </NuxtLink>
         </div>
 
-        <div v-show="loading">
-            <n-result title="Loading model" description="Please wait a moment">
-                <template #icon>
-                    <n-spin size="large" />
-                </template>
-            </n-result>
-        </div>
+        <div class="justify-self-center self-center">
+            <div v-if="loading">
+                <n-result title="Loading model" description="Please wait a moment">
+                    <template #icon>
+                        <n-spin size="large" />
+                    </template>
+                </n-result>
+            </div>
 
-        <div v-show="!loading">
-            <slot></slot>
+            <div v-else>
+                <slot></slot>
+            </div>
         </div>
 
     </div>
