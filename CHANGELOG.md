@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.4.2
+
+[compare changes](https://github.com/becem-gharbi/tensorflow-demos/compare/v1.4.1...v1.4.2)
+
+
+### 🩹 Fixes
+
+  - Fix layout shift ([63b15ee](https://github.com/becem-gharbi/tensorflow-demos/commit/63b15ee))
+
+### 🏡 Chore
+
+  - Update deps ([230aae6](https://github.com/becem-gharbi/tensorflow-demos/commit/230aae6))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.4.1
 
 [compare changes](https://github.com/becem-gharbi/tensorflow-demos/compare/v1.4.0...v1.4.1)
