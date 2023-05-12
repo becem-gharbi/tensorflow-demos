@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as faceDetection from '@tensorflow-models/face-detection';
 
 let detector: faceDetection.FaceDetector | undefined = undefined
@@ -15,6 +15,8 @@ const loading = ref(true)
 const faces = ref<faceDetection.Face[]>([])
 
 onMounted(async () => {
+    await tf.ready()
+
     const model = faceDetection.SupportedModels.MediaPipeFaceDetector;
 
     detector = await faceDetection.createDetector(model, {

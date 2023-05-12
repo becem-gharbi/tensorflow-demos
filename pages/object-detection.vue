@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
 let model: cocoSsd.ObjectDetection | undefined = undefined
@@ -15,6 +15,8 @@ const loading = ref(true)
 const detectedObjects = ref<cocoSsd.DetectedObject[]>();
 
 onMounted(async () => {
+    await tf.ready()
+    
     model = await cocoSsd.load()
     loading.value = false
 })

@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as qna from "@tensorflow-models/qna";
 
 let model: qna.QuestionAndAnswer | undefined = undefined
@@ -38,6 +38,8 @@ const answers = ref<QnaAnswer[]>()
 const loading = ref(true)
 
 onMounted(async () => {
+    await tf.ready()
+
     model = await qna.load();
     loading.value = false
 })

@@ -13,24 +13,24 @@
   },
   "devDependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.17.0",
-    "@nuxtjs/tailwindcss": "^6.6.5",
-    "changelogen": "^0.5.2",
-    "nuxt": "^3.3.2"
+    "@nuxtjs/tailwindcss": "^6.6.8",
+    "changelogen": "^0.5.3",
+    "nuxt": "^3.4.3"
   },
   "dependencies": {
-    "@bg-dev/nuxt-naiveui": "^1.0.5",
+    "@bg-dev/nuxt-naiveui": "^1.1.0",
     "@mediapipe/face_detection": "^0.4.1646425229",
     "@mediapipe/face_mesh": "^0.4.1633559619",
     "@mediapipe/hands": "^0.4.1675469240",
     "@mediapipe/pose": "^0.5.1675469404",
     "@teachablemachine/image": "^0.8.5",
     "@tensorflow-models/coco-ssd": "^2.2.2",
-    "@tensorflow-models/face-detection": "^1.0.1",
+    "@tensorflow-models/face-detection": "^1.0.2",
     "@tensorflow-models/face-landmarks-detection": "^1.0.2",
     "@tensorflow-models/hand-pose-detection": "^2.0.0",
     "@tensorflow-models/pose-detection": "^2.1.0",
     "@tensorflow-models/qna": "^1.0.1",
     "@tensorflow-models/speech-commands": "^0.5.4",
-    "@tensorflow/tfjs": "^4.2.0"
+    "@tensorflow/tfjs": "^4.5.0"
   }
 }

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as speechCommands from '@tensorflow-models/speech-commands';
 
 let recognizer: speechCommands.SpeechCommandRecognizer | undefined = undefined
@@ -17,6 +17,8 @@ const classWithHighestScore = ref<string>()
 const loading = ref(true)
 
 onMounted(async () => {
+    await tf.ready()
+
     recognizer = speechCommands.create('BROWSER_FFT');
     await recognizer.ensureModelLoaded();
     wordLabels.value = recognizer.wordLabels()

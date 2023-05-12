@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 
 let detector: handPoseDetection.HandDetector | undefined = undefined
@@ -15,6 +15,8 @@ const loading = ref(true)
 const hands = ref<handPoseDetection.Hand[]>([])
 
 onMounted(async () => {
+    await tf.ready()
+
     const model = handPoseDetection.SupportedModels.MediaPipeHands
 
     detector = await handPoseDetection.createDetector(model, {

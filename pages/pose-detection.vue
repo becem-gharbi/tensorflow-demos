@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as poseDetection from '@tensorflow-models/pose-detection';
 
 let detector: poseDetection.PoseDetector | undefined = undefined
@@ -15,6 +15,8 @@ const loading = ref(true)
 const poses = ref<poseDetection.Pose[]>([])
 
 onMounted(async () => {
+    await tf.ready()
+
     const model = poseDetection.SupportedModels.MoveNet
 
     detector = await poseDetection.createDetector(model, {

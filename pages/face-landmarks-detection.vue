@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import "@tensorflow/tfjs"
+import * as tf from "@tensorflow/tfjs"
 import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
 
 let detector: faceLandmarksDetection.FaceLandmarksDetector | undefined = undefined
@@ -15,6 +15,8 @@ const loading = ref(true)
 const faces = ref<faceLandmarksDetection.Face[]>([])
 
 onMounted(async () => {
+    await tf.ready()
+
     const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
 
     detector = await faceLandmarksDetection.createDetector(model, {
