@@ -18,7 +18,7 @@
     "nuxt": "^3.4.3"
   },
   "dependencies": {
-    "@bg-dev/nuxt-naiveui": "^1.1.0",
+    "@bg-dev/nuxt-naiveui": "^1.2.6",
     "@mediapipe/face_detection": "^0.4.1646425229",
     "@mediapipe/face_mesh": "^0.4.1633559619",
     "@mediapipe/hands": "^0.4.1675469240",
